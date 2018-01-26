@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+<title>Run a match</title>
+<meta name="description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
+<link rel="canonical" href="https://www.marcusoft.net/tankwars/pages/match.html">
+<link rel="alternate" type="application/rss+xml" title="Serverless Camp: Tank Wars" href="https://www.marcusoft.net/tankwars/feed.xml">
+
+
+<!-- Shorcut icon -->
+<link rel="shortcut icon" href="/assets/icon-32.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/icon-152.png">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Run a match">
+<meta itemprop="description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
+<meta itemprop="image" content="https://www.marcusoft.net/tankwars/assets/tank-drawn.png">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+<meta name="twitter:title" content="Run a match">
+<meta name="twitter:description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
+<meta name="twitter:creator" content="">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="https://www.marcusoft.net/tankwars/assets/tank-drawn.png">
+
+<!-- Open Graph data -->
+<meta property="og:title"  content="Run a match" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.marcusoft.net/tankwars/pages/match.html" />
+<meta property="og:image" content="https://www.marcusoft.net/tankwars/assets/tank-drawn.png" />
+<meta property="og:description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare"/>
+<meta property="og:site_name" content="Serverless Camp: Tank Wars" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+<meta name="asset-v" content="1516974988" />
+
+<link rel="stylesheet" type="text/css" media="all" href="/style/main.css" />
+
+
+
+  <body class="match">
+    <header class="site-header">
+    <a class="site-title" href="/">Serverless Camp: Tank Wars</a>
+    <nav>
+        
+          
+          <a class="page-link" href="/pages/api.html">API Docs</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/pages/match.html">Run a match</a>
+          
+        
+          
+        
+          
+          <a class="page-link" href="/pages/test.html">Test your API</a>
+          
+        
+    </nav>
+</header>
+
+    <content>
+      <div role="matchContainer" class="matchContainer column">
+	<div role="logModal" class="modal column hide">
+		<button role="closeLog">Close Log</button>
+		<textarea role="log" class="log huge">
+		</textarea>
+	</div>
+	<div class="winner modal column">
+		<div class="win-container">
+			<h1 role="outcome"></h1>
+			<button role="startAgain">Start Again</button> 
+			<button role="hideResults">Back to options</button> 
+		</div>
+	</div>
+	<div role="advancedOptions" class="hide-when-active hide">
+		<div class="row">
+		<label>Map width:</label> <input role="option" name="mapWidth" value="20" class="short" />
+		<label>Map height:</label> <input role="option" name="mapHeight" value="20" class="short" />
+		<label>Radar range:</label> <input role="option" name="visibility" value="7" class="short" />
+		<label>Weapon range:</label> <input role="option" name="weaponRange" value="5" class="short" />
+	</div>
+	<div class="row">
+		<label>Minimum wall spacing:</label> <input role="option" name="minSpacing" value="3" class="short" />
+		<label>Vertical wall chance</label> <input role="option" data-type="float" name="verticalWallProb" value="0.5" class="short" />
+		<label>Horizontal wall chance</label> <input role="option" data-type="float" name="horizontalWallProb" value="0.5" class="short" />
+	</div>
+	<div class="row">
+		<label>Wall strength:</label> <input role="option" name="wallStrength" value="200" class="short" />
+		<label>Tank strength:</label> <input role="option" name="tankStrength" value="300" class="short" />
+		<label>Ammo:</label> <input role="option" name="maxAmmo" value="1000" class="short" />
+		<label>Turns to Sudden Death:</label> <input role="option" name="suddenDeath" value="300" class="short" />
+	</div>
+	<div class="row">
+		<label>Wall impact damage:</label> <input role="option" name="wallDamage" value="30" class="short" />
+		<label>Tank impact damage:</label> <input role="option" name="tankDamage" value="50" class="short" />
+		<label>Weapon damage:</label> <input role="option" name="weaponDamage" value="60" class="short" />
+	</div>
+
+	</div>
+	<div class="row hide-when-active">
+		<label>Tank 1 API URL:</label> <input role="tank1Api" class="long" placeholder="https://abc/def" /> <a href="https://tankwars.serverless.camp/pages/tank_brigade.html">Tank Brigade</a>
+	</div>
+	<div class="row hide-when-active ">
+		<label>Tank 2 API URL:</label> <input role="tank2Api" class="long" placeholder="https://abc/def" /> <a href="https://tankwars.serverless.camp/pages/tank_brigade.html">Tank Brigade</a>
+	</div>
+	<div>
+		<button role="toggleAdvancedOptions" class="hide-when-active">Advanced options</button>
+		<button role="initMatch" class="hide-when-active green">New Match</button>
+		<button role="showLog">Show Log</button>
+	</div>
+	<div class="row show-when-active">
+		<div class="map-wrapper">
+			<div role="matchMap"></div>
+		</div>
+		<div class="dashboard">
+			<div>
+	<ul>
+		<li><h2>Match Id:</h2></li>
+		<li role="matchId"></li>
+		<li>Turns left: <span role="suddenDeathTurns"></span> <button role="skipTurns" turns="50">Skip 50 turns</button></li>
+	</ul>
+</div>
+
+<div>
+	<ul>
+	<li><h2 class="tank1avatar" role="tank1Name">Tank 0</h2></li>
+	<li>Strength: <span role="tankStatus" key="0" flag="strength" /></li>
+	<li>Ammo: <span role="tankStatus" key="0" flag="ammo" /></li>
+	</ul>
+</div>
+<span>
+	<ul>
+	<li><h2 class="tank2avatar" role="tank2Name">Tank 1</h2></li>
+	<li>Strength: <span role="tankStatus" key="1" flag="strength" /></li>
+	<li>Ammo: <span role="tankStatus" key="1" flag="ammo" /></li>
+	</ul>
+</span>
+
+
+		</div>
+	</div>
+</div>
+
+
+<script>
+window.addEventListener('load', function () { initMatchPage(document, config); });
+</script>
+
+    </content>
+    <footer id="main-footer">
+	See <a href="https://serverless.camp">https://serverless.camp</a> for information on how to participate in the next camp!
+	Built using artwork from <a href="http://www.widgetworx.com/spritelib/">WidgetWorx spritelib</a>. 
+</footer>
+
+    <script>
+	window.config = {
+		apiEndpoint : ''
+	};
+</script>
+
+
+<script src="/v/dev-1516974988.js"></script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,305 @@
+[role=matchContainer]:not(.active) .show-when-active { display: none; }
+[role=matchContainer].active .hide-when-active { display: none; }
+
+[role=matchMap] {
+  background-image: url('../assets/tiles/background-orange.png');
+  position: relative;
+  z-index: 0;
+  flex-shrink: 0;
+}
+bullet {
+  position: absolute;
+  z-index: 100;
+  animation-duration: 0.3s;
+  animation-delay: 0.2s;
+  animation-name: bullet-fire;
+  background-size: contain;
+  background-position: right center;
+  background-image: url('../assets/tiles/bullet-right.png');
+  opacity: 0;
+  background-repeat: no-repeat;
+}
+wall {
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  background-image: url('../assets/tiles/wall-red-100.png');
+  transition: all 0.3s ease-in-out;
+  transition-delay: 0.5s;
+  z-index: 5;
+}
+wall[status="75"] {
+  background-image: url('../assets/tiles/wall-red-75.png');
+}
+wall[status="50"] {
+  background-image: url('../assets/tiles/wall-red-50.png');
+}
+wall[status="25"] {
+  background-image: url('../assets/tiles/wall-red-25.png');
+}
+fire {
+  position: absolute;
+  background-size: cover;
+  background-position: center center;
+  background-image: url('../assets/tiles/exp-3.png');
+  z-index: 7;
+  animation: explode 2s infinite;
+
+
+}
+
+tank {
+  position: absolute;
+  transition: all 1s ease-in-out;
+  background-size: cover;
+  background-position: center center;
+  z-index: 10;
+  animation-duration: 1s;
+}
+tank:nth-of-type(2n+1) {
+  background-image: url('../assets/tiles/tank-green-0.png');
+}
+tank:nth-of-type(2n) {
+  background-image: url('../assets/tiles/tank-blue-0.png');
+}
+tank:nth-of-type(2n+1)[status=moving] {
+ animation-name: move-green;
+}
+tank:nth-of-type(2n)[status=moving] {
+ animation-name: move-blue;
+}
+
+tank[status=firing] {
+ animation-duration: 0.5s;
+}
+tank:nth-of-type(2n+1)[status=firing] {
+ animation-name: fire-green;
+}
+tank:nth-of-type(2n)[status=firing] {
+ animation-name: fire-blue;
+}
+
+tank[status="bump-right"] {
+  animation-duration: 1s;
+  animation-name: bump-right;
+}
+tank[status="bump-left"] {
+  animation-duration: 1s;
+  animation-name: bump-left;
+}
+tank[status="bump-bottom"] {
+  animation-duration: 1s;
+  animation-name: bump-bottom;
+}
+tank[status="bump-top"] {
+  animation-duration: 1s;
+  animation-name: bump-top;
+}
+tank[status="bump-top"]::after, tank[status="bump-left"]::after, tank[status="bump-right"]::after, tank[status="bump-bottom"]::after,
+tank[status="bumped"]::after, tank[status="hit"]::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-duration: 0.5s;
+  animation-delay: 0.5s;
+  animation-name: hit;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+}
+
+tank.exploded::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-duration: 2s;
+  animation-delay: 1s;
+  animation-name: explode;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background-image: url('../assets/tiles/exp-3.png');
+}
+
+@keyframes bullet-fire {
+  from {
+	  background-position: left center;
+	  opacity: 0;
+  }
+  10% {
+	  opacity: 1;
+  }
+  to {
+	  opacity: 1;
+	  background-position: right center;
+  }
+}
+
+@keyframes hit {
+  from {
+    background-image: url('../assets/tiles/exp-1.png');
+  }
+  to {
+    background-image: url('../assets/tiles/exp-2.png');
+  }
+}
+
+@keyframes move-green {
+  from {
+    background-image: url('../assets/tiles/tank-green-1.png');
+  }
+  20% {
+    background-image: url('../assets/tiles/tank-green-2.png');
+  }
+  40% {
+    background-image: url('../assets/tiles/tank-green-3.png');
+  }
+  60% {
+    background-image: url('../assets/tiles/tank-green-4.png');
+  }
+  80% {
+    background-image: url('../assets/tiles/tank-green-5.png');
+  }
+  to {
+    background-image: url('../assets/tiles/tank-green-6.png');
+  }
+}
+
+
+@keyframes move-blue {
+  from {
+    background-image: url('../assets/tiles/tank-blue-1.png');
+  }
+  20% {
+    background-image: url('../assets/tiles/tank-blue-2.png');
+  }
+  40% {
+    background-image: url('../assets/tiles/tank-blue-3.png');
+  }
+  60% {
+    background-image: url('../assets/tiles/tank-blue-4.png');
+  }
+  80% {
+    background-image: url('../assets/tiles/tank-blue-5.png');
+  }
+  to {
+    background-image: url('../assets/tiles/tank-blue-6.png');
+  }
+}
+
+
+@keyframes fire-blue {
+  from {
+    background-image: url('../assets/tiles/tank-blue-fire-1.png');
+  }
+  25% {
+    background-image: url('../assets/tiles/tank-blue-fire-0.png');
+  }
+  50% {
+    background-image: url('../assets/tiles/tank-blue-fire-1.png');
+  }
+  75% {
+    background-image: url('../assets/tiles/tank-blue-fire-2.png');
+  }
+  to {
+    background-image: url('../assets/tiles/tank-blue-fire-1.png');
+  }
+}
+@keyframes fire-green {
+  from {
+    background-image: url('../assets/tiles/tank-green-fire-1.png');
+  }
+  25% {
+    background-image: url('../assets/tiles/tank-green-fire-0.png');
+  }
+  50% {
+    background-image: url('../assets/tiles/tank-green-fire-1.png');
+  }
+  75% {
+    background-image: url('../assets/tiles/tank-green-fire-2.png');
+  }
+  to {
+    background-image: url('../assets/tiles/tank-green-fire-1.png');
+  }
+}
+
+
+@keyframes bump-right {
+  from {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 5px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+@keyframes bump-left {
+  from {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: -5px;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+@keyframes bump-top {
+  from {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -5px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes bump-bottom {
+  from {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 5px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+
+@keyframes explode {
+  from {
+    background-image: url('../assets/tiles/exp-1.png');
+  }
+  10% {
+    background-image: url('../assets/tiles/exp-2.png');
+  }
+  20% {
+    background-image: url('../assets/tiles/exp-3.png');
+  }
+  40% {
+    background-image: url('../assets/tiles/exp-1.png');
+  }
+  50% {
+    background-image: url('../assets/tiles/exp-2.png');
+  }
+  60% {
+    background-image: url('../assets/tiles/exp-3.png');
+  }
+  80% {
+    background-image: url('../assets/tiles/exp-1.png');
+  }
+  90% {
+    background-image: url('../assets/tiles/exp-2.png');
+  }
+  to {
+    background-image: url('../assets/tiles/exp-3.png');
+  }
+}

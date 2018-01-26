@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+<title>Azure install</title>
+<meta name="description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
+<link rel="canonical" href="https://www.marcusoft.net/tankwars/pages/azure-setup.html">
+<link rel="alternate" type="application/rss+xml" title="Serverless Camp: Tank Wars" href="https://www.marcusoft.net/tankwars/feed.xml">
+
+
+<!-- Shorcut icon -->
+<link rel="shortcut icon" href="/assets/icon-32.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/icon-152.png">
+
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Azure install">
+<meta itemprop="description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
+<meta itemprop="image" content="https://www.marcusoft.net/tankwars/assets/tank-drawn.png">
+
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+<meta name="twitter:title" content="Azure install">
+<meta name="twitter:description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
+<meta name="twitter:creator" content="">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="https://www.marcusoft.net/tankwars/assets/tank-drawn.png">
+
+<!-- Open Graph data -->
+<meta property="og:title"  content="Azure install" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.marcusoft.net/tankwars/pages/azure-setup.html" />
+<meta property="og:image" content="https://www.marcusoft.net/tankwars/assets/tank-drawn.png" />
+<meta property="og:description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare"/>
+<meta property="og:site_name" content="Serverless Camp: Tank Wars" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+<meta name="asset-v" content="1516974988" />
+
+<link rel="stylesheet" type="text/css" media="all" href="/style/main.css" />
+
+
+
+  <body class="">
+    <header class="site-header">
+    <a class="site-title" href="/">Serverless Camp: Tank Wars</a>
+    <nav>
+        
+          
+          <a class="page-link" href="/pages/api.html">API Docs</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/pages/match.html">Run a match</a>
+          
+        
+          
+        
+          
+          <a class="page-link" href="/pages/test.html">Test your API</a>
+          
+        
+    </nav>
+</header>
+
+    <content>
+      <h1 id="docs">Docs</h1>
+
+<ul>
+  <li>
+    <p><a href="https://azure.microsoft.com/en-us/documentation/articles/functions-reference/">Main docs here</a></p>
+  </li>
+  <li>
+    <p>for c#, it uses scriptcs, instead of c#</p>
+  </li>
+</ul>
+
+<h1 id="prerequisites">Prerequisites</h1>
+
+<ul>
+  <li>Azure subscription, register at <a href="https://azure.microsoft.com">azure.microsoft.com</a>, you can also use free trial</li>
+  <li>If you have MSDN, you likely already have access</li>
+  <li>there is a <a href="https://github.com/azure/azure-webjobs-sdk-script/pull/477">command line interface for azure functions</a>, but not yet officially released
+    <ul>
+      <li>just run <code class="highlighter-rouge">func new</code> to set it up</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="setup-functions">Setup functions</h1>
+
+<ul>
+  <li>on <a href="https://functions.azure.com">functions.azure.com</a>, create a new function app</li>
+  <li>app name will be randomly generated</li>
+  <li>create webhook+API function</li>
+  <li>template – choose c# or JS, see <a href="https://github.com/azure/azure-webjobs-sdk-templates/">Azure github repo</a></li>
+  <li>standard mode <em>http trigger</em>, authorization level <em>anonymous</em></li>
+  <li>configuration becomes a JSON definition of inputs/outputs/maps…</li>
+  <li>you can control memory, CORS etc for your function from in <em>Function App Settings</em> – make sure to configure CORS
+    <ul>
+      <li>if you want to add a wildcard (<em>*</em>) then remove everything else</li>
+      <li>Kudu is a super-admin dashboard for websites in azure, can also be used for this, gives you a browser to check what’s actually deployed</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="deploy">Deploy</h1>
+
+<p><em>Function App Settings</em> -&gt; <em>Configure continuous integration</em></p>
+
+<ul>
+  <li>ftp access</li>
+  <li>or github push</li>
+  <li>or dropbox folder sync …</li>
+  <li>or visual studio</li>
+  <li>or IIS webdeploy</li>
+  <li>or Kudu, just drag + drop</li>
+</ul>
+
+<h1 id="troubleshooting">Troubleshooting</h1>
+
+<ul>
+  <li>in <em>Manage</em> you see the hosting stack traces for errors, but in <em>Develop</em> you can see the actual Node.js stack traces</li>
+  <li>You can use Kudu, then LogsFiles</li>
+</ul>
+
+<h1 id="differences-from-lambda">Differences from Lambda</h1>
+
+<ul>
+  <li>no multiversioning, but you can use “deployment slots”</li>
+  <li>concept of function apps, not completely independent functions
+    <ul>
+      <li>one function = one URL, function name is part of the URL</li>
+      <li>so create a function app with 2 functions, info and command</li>
+      <li>convention: name of the folder is the name of the function</li>
+    </ul>
+  </li>
+  <li>use git push for atomic deployments</li>
+</ul>
+
+<h1 id="when-deploying-from-command-line">When deploying from command line</h1>
+
+<ul>
+  <li>make sure to set “authLevel”: “anonymous” in bindings/httpTrigger</li>
+  <li>no way to set CORS in the JSON file, have to set it from the portal</li>
+  <li>make sure that http method POST is allowed, or remove “GET” from the /command function</li>
+</ul>
+
+
+    </content>
+    <footer id="main-footer">
+	See <a href="https://serverless.camp">https://serverless.camp</a> for information on how to participate in the next camp!
+	Built using artwork from <a href="http://www.widgetworx.com/spritelib/">WidgetWorx spritelib</a>. 
+</footer>
+
+    <script>
+	window.config = {
+		apiEndpoint : ''
+	};
+</script>
+
+
+<script src="/v/dev-1516974988.js"></script>
+
+
+
+  </body>
+</html>
