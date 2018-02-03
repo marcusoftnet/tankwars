@@ -35,7 +35,7 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="asset-v" content="1517687193" />
+<meta name="asset-v" content="1517687246" />
 
 <link rel="stylesheet" type="text/css" media="all" href="http://www.marcusoft.net/tankwars/style/main.css" />
 
@@ -93,14 +93,11 @@
   </li>
   <li>
     <p>Run the following commands.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker build <span class="nt">-t</span> tankwars <span class="nb">.</span>
+ docker run <span class="nt">-it</span> <span class="nt">--name</span> tankwars <span class="nt">--mount</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bind</span>,source<span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span>,target<span class="o">=</span>/tank tankwars /bin/bash
+</code></pre></div>    </div>
   </li>
-</ol>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build <span class="nt">-t</span> tankwars <span class="nb">.</span>
-  docker run <span class="nt">-it</span> <span class="nt">--name</span> tankwars <span class="nt">--mount</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bind</span>,source<span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span>,target<span class="o">=</span>/tank tankwars /bin/bash
-</code></pre></div></div>
-
-<ol>
   <li>That have put you inside a shiny new docker container.
     <ul>
       <li>You will see something like <code class="highlighter-rouge">root@11111111:/tank#</code> and a blinking prompt</li>
@@ -191,7 +188,7 @@
 </script>
 
 
-<script src="http://www.marcusoft.net/tankwars/v/dev-1517687193.js"></script>
+<script src="http://www.marcusoft.net/tankwars/v/dev-1517687246.js"></script>
 
 
 
