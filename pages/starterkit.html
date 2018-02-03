@@ -35,7 +35,7 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="asset-v" content="1517687246" />
+<meta name="asset-v" content="1517687693" />
 
 <link rel="stylesheet" type="text/css" media="all" href="http://www.marcusoft.net/tankwars/style/main.css" />
 
@@ -169,11 +169,11 @@
 
 <h2 id="if-you-want-to-clean-up-after-the-workshop">If you want to clean up after the workshop</h2>
 
-<ul>
-  <li>stop all containers: <code class="highlighter-rouge">docker kill $(docker ps -q)</code></li>
-  <li>remove all containers: <code class="highlighter-rouge">docker rm $(docker ps -a -q)</code></li>
-  <li>remove all docker images: <code class="highlighter-rouge">docker rmi $(docker images -q)</code></li>
-</ul>
+<ol>
+  <li>Exit the tankwars container with <code class="highlighter-rouge">exit</code> in the container (<code class="highlighter-rouge">root@11111111:/tank#</code>)</li>
+  <li>remove the container: <code class="highlighter-rouge">docker rm tankwars</code></li>
+  <li>remove the docker image: <code class="highlighter-rouge">docker rmi tankwars</code></li>
+</ol>
 
     </content>
     <footer id="main-footer">
@@ -188,7 +188,7 @@
 </script>
 
 
-<script src="http://www.marcusoft.net/tankwars/v/dev-1517687246.js"></script>
+<script src="http://www.marcusoft.net/tankwars/v/dev-1517687693.js"></script>
 
 
 
