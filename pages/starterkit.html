@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <meta charset="UTF-8">
-<title>StarterKit</title>
-<meta name="description" content="A description on how to use the starter kit">
+<title>Starter kit</title>
+<meta name="description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
 <link rel="canonical" href="http://www.marcusoft.net/tankwars/pages/starterkit.html">
 <link rel="alternate" type="application/rss+xml" title="MobProgramming Boston 2018: Tank Wars" href="http://www.marcusoft.net/tankwars/feed.xml">
 
@@ -12,30 +12,30 @@
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://www.marcusoft.net/tankwars/assets/icon-152.png">
 
 <!-- Schema.org markup for Google+ -->
-<meta itemprop="name" content="StarterKit">
-<meta itemprop="description" content="A description on how to use the starter kit">
+<meta itemprop="name" content="Starter kit">
+<meta itemprop="description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
 <meta itemprop="image" content="http://www.marcusoft.net/tankwars/tankwars/assets/tank-drawn.png">
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="marcusoftnet">
-<meta name="twitter:title" content="StarterKit">
-<meta name="twitter:description" content="A description on how to use the starter kit">
+<meta name="twitter:title" content="Starter kit">
+<meta name="twitter:description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
 <meta name="twitter:creator" content="marcusoftnet">
 <!-- Twitter summary card with large image must be at least 280x150px -->
 <meta name="twitter:image:src" content="http://www.marcusoft.net/tankwars/tankwars/assets/tank-drawn.png">
 
 <!-- Open Graph data -->
-<meta property="og:title"  content="StarterKit" />
+<meta property="og:title"  content="Starter kit" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://www.marcusoft.net/tankwars/pages/starterkit.html" />
 <meta property="og:image" content="http://www.marcusoft.net/tankwars/tankwars/assets/tank-drawn.png" />
-<meta property="og:description" content="A description on how to use the starter kit"/>
+<meta property="og:description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare"/>
 <meta property="og:site_name" content="MobProgramming Boston 2018: Tank Wars" />
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="asset-v" content="1517687693" />
+<meta name="asset-v" content="1518294721" />
 
 <link rel="stylesheet" type="text/css" media="all" href="http://www.marcusoft.net/tankwars/style/main.css" />
 
@@ -59,6 +59,8 @@
           
         
           
+          <a class="page-link" href="http://www.marcusoft.net/tankwars/pages/starterkit.html">Starter kit</a>
+          
         
           
         
@@ -70,110 +72,89 @@
 </header>
 
     <content>
-      <h1 id="tankwars-starter-kit">Tankwars starter kit</h1>
+      <h1 id="get-your-tank-shooting-in-minutes">Get your tank shooting in minutes</h1>
 
-<p>This is a way to get started faster with building your first tank for the <a href="http://www.marcusoft.net/tankwars">Boston Mob Programming Conference Tank War</a></p>
+<p>Ah, well… first you need <a href="https://www.docker.com/community-edition">Docker</a> installed. Do that before the workshop</p>
 
-<h2 id="prerequisites">Prerequisites</h2>
-<p>You, or at least the computer your mob is using, need Docker installed to take part in the workshop. This will minimize the impact on your machine and stream-line the process for me.</p>
-
-<p>Install <a href="https://www.docker.com/community-edition">Docker</a> here. Before you go to workshop.</p>
-
-<h2 id="get-your-first-tank-shooting-in-minutes">Get your first tank shooting in minutes</h2>
-
-<ol>
+<ul>
   <li>
-    <p>Download the <a href="https://www.dropbox.com/s/zubuww9r5wn9hei/tankwars-starter-kit.zip?dl=0">starter-kit from here</a></p>
+    <p>Download the files for the starter kit and unzip them in suitable folder <code class="highlighter-rouge">/Projects/tankwars-starter-kit</code> for example</p>
   </li>
-  <li>
-    <p>Unzip it to a suitable location <code class="highlighter-rouge">/projects/tankwars-starter-kit</code> for example</p>
-  </li>
-  <li>
-    <p>Open a terminal / command prompt in that directory</p>
-  </li>
-  <li>
-    <p>Run the following commands.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker build <span class="nt">-t</span> tankwars <span class="nb">.</span>
- docker run <span class="nt">-it</span> <span class="nt">--name</span> tankwars <span class="nt">--mount</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bind</span>,source<span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span>,target<span class="o">=</span>/tank tankwars /bin/bash
-</code></pre></div>    </div>
-  </li>
-  <li>That have put you inside a shiny new docker container.
+  <li>Open an editor to that folder and open the <code class="highlighter-rouge">tank.js</code>-file.
     <ul>
-      <li>You will see something like <code class="highlighter-rouge">root@11111111:/tank#</code> and a blinking prompt</li>
+      <li>Edit the name and description of your tank to match your mob</li>
+      <li>Save the file</li>
     </ul>
   </li>
-  <li>
-    <p>Not only that… Your tank is already deployed and ready to be used! It’s very simple sure (just fires without moving), but it exists on the interwebs.</p>
+  <li>Also open a terminal window into the folder where you unzipped the files.
+    <ul>
+      <li>Leave this terminal window running for the duration of the workshop</li>
+      <li>Run this in a terminal window:</li>
+    </ul>
   </li>
-  <li>The URL to your tank has been printed in the terminal. You can see it in the last output. It looks something, but not exactly, like this:</li>
-</ol>
+</ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```json
-  "api": {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build -t tankwars . &amp;&amp;
+  docker run -it --name tankwars --mount type=bind,source="$(pwd)",target=/tank tankwars /bin/bash
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Wait a few minutes, but before long you will find yourself in the container. It will look something like this <code class="highlighter-rouge">root@11111111:/tank#</code></p>
+  </li>
+  <li>Let’s create the tank for you by running this command in the container: <code class="highlighter-rouge">npm run create</code></li>
+  <li>This will take a minute or two, since we need to install stuff before we deploy. But soon…</li>
+  <li><strong>Much success!</strong> Your tank is deployed on the internet. You need to copy the URL to the tank from the output of the last command. It looks something like this:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"api": {
     "id": "dijyb021g4",
     "module": "api",
-    "url": "https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest"
+    "url": "https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest" // &lt;== copy this URL
   }
-```
 </code></pre></div></div>
 
-<ol>
-  <li>
-    <p><strong>That url is important</strong> - so make a note of it.</p>
-  </li>
-  <li>
-    <p>You can always see it again by typing <code class="highlighter-rouge">cat claudia.json</code></p>
-  </li>
-  <li>
-    <p>Let’s make some changes and redeploy.</p>
-  </li>
-  <li>
-    <p>Open a text editor to the directory where you unzipped the file <code class="highlighter-rouge">/projects/tankwars-starter-kit</code> for example</p>
-  </li>
-  <li>
-    <p>Edit the name of the tank and your team in the <code class="highlighter-rouge">api.js</code>-file</p>
-  </li>
-</ol>
+<p>This tank works… but honestly it’s pretty stupid. It just fires all the time. You need to improve the code in <code class="highlighter-rouge">tank.js</code>-file.
+But test it in a <a href="http://www.marcusoft.net/tankwars/pages/match.html">match</a> and you’ll see how it works.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">api</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/info'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span>
-      <span class="na">name</span><span class="p">:</span> <span class="s1">'[your cool tank name here]'</span><span class="p">,</span> <span class="c1">// &lt;== Change this string</span>
-      <span class="na">owner</span><span class="p">:</span> <span class="s1">'[your team name]'</span> <span class="c1">// &lt;== Change this string</span>
-    <span class="p">}</span>
-  <span class="p">})</span>
-</code></pre></div></div>
+<p>Better hurry up to make it better. We will run matches every 20 minutes.</p>
 
-<ol>
-  <li>
-    <p>Once you saved that file, go back to the terminal / command prompt in the container (<code class="highlighter-rouge">root@205c2a318c6f:/tank#</code>) and deploy your change <code class="highlighter-rouge">npm run deploy</code></p>
-  </li>
-  <li>
-    <p>And now you are ready to go to Tank War!</p>
-  </li>
-</ol>
+<h1 id="other-useful-tricks">Other useful tricks</h1>
 
-<p>Now iterate over the code in the. <code class="highlighter-rouge">api.post('/command', function (req) {</code>-function, because right now you tank is just firing and will become a sitting duck for the other mobs tanks. Go! Go! Go!</p>
+<h2 id="edit-and-redeploy">Edit and redeploy</h2>
+<ul>
+  <li>Edit the files via your editor</li>
+  <li>Save the files</li>
+  <li>Redeploy with <code class="highlighter-rouge">npm run deploy</code></li>
+  <li><a href="http://www.marcusoft.net/tankwars/pages/test.html">Test the API here</a> or run a <a href="http://www.marcusoft.net/tankwars/pages/match.html">match against others here</a></li>
+</ul>
+
+<h2 id="get-hold-of-the-url">Get hold of the URL</h2>
+<ul>
+  <li>Open the <code class="highlighter-rouge">claudia.json</code>-file</li>
+  <li>Copy the <code class="highlighter-rouge">URL</code>-field</li>
+</ul>
 
 <h2 id="test-your-tank">Test your tank</h2>
+<p>Use the <a href="http://www.marcusoft.net/tankwars/pages/test.html">test page</a> and paste the URL into the <code class="highlighter-rouge">API URL</code>-field on the page</p>
 
-<p>There’s an extensive testing feature of the <a href="http://www.marcusoft.net/tankwars/">TankWars website</a>. Head there to <a href="http://www.marcusoft.net/tankwars/pages/test.html">test all different commands</a> of your tank.</p>
+<h2 id="run-a-match">Run a match</h2>
+<p>Go to the <a href="http://www.marcusoft.net/tankwars/pages/match.html">match page</a> and paste the URL into one of the <code class="highlighter-rouge">Tank API URL</code>-fields</p>
 
-<h2 id="running-a-game">Running a game</h2>
+<h2 id="take-the-tankwars-off-my-computer">Take the tankwars off my computer!</h2>
+<ul>
+  <li>
+    <p>First exit the container with <code class="highlighter-rouge">exit</code> at the container prompt.</p>
+  </li>
+  <li>
+    <p>Clean up the docker images with these commands</p>
+  </li>
+</ul>
 
-<p>Once you have tank you want to try out, head to <a href="http://www.marcusoft.net/tankwars/pages/match.html">The Arena</a> and enter your tank URL. You can compete against yourself (enter the url twice) or against someone else, entering their url.</p>
-
-<h2 id="documentation">Documentation</h2>
-
-<p>The <a href="http://www.marcusoft.net/tankwars/pages/api.html">API is well documented</a> and can be found here</p>
-
-<h2 id="if-you-want-to-clean-up-after-the-workshop">If you want to clean up after the workshop</h2>
-
-<ol>
-  <li>Exit the tankwars container with <code class="highlighter-rouge">exit</code> in the container (<code class="highlighter-rouge">root@11111111:/tank#</code>)</li>
-  <li>remove the container: <code class="highlighter-rouge">docker rm tankwars</code></li>
-  <li>remove the docker image: <code class="highlighter-rouge">docker rmi tankwars</code></li>
-</ol>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker kill tankwars
+docker rmi tankwars -f
+docker system prune -f
+</code></pre></div></div>
 
     </content>
     <footer id="main-footer">
@@ -188,7 +169,7 @@
 </script>
 
 
-<script src="http://www.marcusoft.net/tankwars/v/dev-1517687693.js"></script>
+<script src="http://www.marcusoft.net/tankwars/v/dev-1518294721.js"></script>
 
 
 
