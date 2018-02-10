@@ -1,82 +1,66 @@
-# Tankwars starter kit
+# Get your tank shooting in minutes
 
-This is a way to get started faster with building your first tank for the [Boston Mob Programming Conference Tank War](http://www.marcusoft.net/tankwars)
+Ah, well... first you need [Docker](https://www.docker.com/community-edition) installed. Do that before the workshop
 
-## Prerequisites
-You, or at least the computer your mob is using, need Docker installed to take part in the workshop. This will minimize the impact on your machine and stream-line the process for me.
+* Download the files for the starter kit and unzip them in suitable folder `/Projects/tankwars-starter-kit` for example
 
-Install [Docker](https://www.docker.com/community-edition) here. Before you go to workshop.
+* Open an editor to that folder and open the `tank.js`-file.
+  * Edit the name and description of your tank to match your mob
+  * Save the file
 
-## Get your first tank shooting in minutes
+* Also open a terminal window into the folder where you unzipped the files.
+  * Leave this terminal window running for the duration of the workshop
+  * Run this in a terminal window:
 
-1. Download the [starter-kit from here](https://www.dropbox.com/s/zubuww9r5wn9hei/tankwars-starter-kit.zip?dl=0)
-
-2. Unzip it to a suitable location `/projects/tankwars-starter-kit` for example
-
-3. Open a terminal / command prompt in that directory
-
-4. Run the following commands.
-
-  ```bash
-  docker build -t tankwars .
+ ```
+  docker build -t tankwars . &&
   docker run -it --name tankwars --mount type=bind,source="$(pwd)",target=/tank tankwars /bin/bash
-  ```
+ ```
 
-5. That have put you inside a shiny new docker container.
-  * You will see something like `root@11111111:/tank#` and a blinking prompt
+* Wait a few minutes, but before long you will find yourself in the container. It will look something like this `root@11111111:/tank#`
 
-6. Not only that... Your tank is already deployed and ready to be used! It's very simple sure (just fires without moving), but it exists on the interwebs.
+* Let's create the tank for you by running this command in the container: `npm run create`
+* This will take a minute or two, since we need to install stuff before we deploy. But soon...
+* **Much success!** Your tank is deployed on the internet. You need to copy the URL to the tank from the output of the last command. It looks something like this:
 
-  1. The URL to your tank has been printed in the terminal. You can see it in the last output. It looks something, but not exactly, like this:
+```
+"api": {
+    "id": "dijyb021g4",
+    "module": "api",
+    "url": "https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest" // <== copy this URL
+  }
+```
 
-    ```json
-      "api": {
-        "id": "dijyb021g4",
-        "module": "api",
-        "url": "https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest"
-      }
-    ```
+This tank works... but honestly it's pretty stupid. It just fires all the time. You need to improve the code in `tank.js`-file.
+But test it in a [match](http://www.marcusoft.net/tankwars/pages/match.html) and you'll see how it works.
 
-  2. **That url is important** - so make a note of it.
+Better hurry up to make it better. We will run matches every 20 minutes.
 
-  3. You can always see it again by typing `cat claudia.json`
+# Other useful tricks
 
-7. Let's make some changes and redeploy.
+## Edit and redeploy
+* Edit the files via your editor
+* Save the files
+* Redeploy with `npm run deploy`
+* [Test the API here](http://www.marcusoft.net/tankwars/pages/test.html) or run a [match against others here](http://www.marcusoft.net/tankwars/pages/match.html)
 
-8. Open a text editor to the directory where you unzipped the file `/projects/tankwars-starter-kit` for example
-
-9. Edit the name of the tank and your team in the `api.js`-file
-
-  ```javascript
-  api.get('/info', function () {
-    return {
-      name: '[your cool tank name here]', // <== Change this string
-      owner: '[your team name]' // <== Change this string
-    }
-  })
-  ```
-
-10. Once you saved that file, go back to the terminal / command prompt in the container (`root@205c2a318c6f:/tank#`) and deploy your change `npm run deploy`
-
-11. And now you are ready to go to Tank War!
-
-Now iterate over the code in the. `api.post('/command', function (req) {`-function, because right now you tank is just firing and will become a sitting duck for the other mobs tanks. Go! Go! Go!
-
+## Get hold of the URL
+* Open the `claudia.json`-file
+* Copy the `URL`-field
 
 ## Test your tank
+Use the [test page](http://www.marcusoft.net/tankwars/pages/test.html) and paste the URL into the `API URL`-field on the page
 
-There's an extensive testing feature of the [TankWars website](http://www.marcusoft.net/tankwars/). Head there to [test all different commands](http://www.marcusoft.net/tankwars/pages/test.html) of your tank.
+## Run a match
+Go to the [match page](http://www.marcusoft.net/tankwars/pages/match.html) and paste the URL into one of the `Tank API URL`-fields
 
-## Running a game
+## Take the tankwars off my computer!
+* First exit the container with `exit` at the container prompt.
 
-Once you have tank you want to try out, head to [The Arena](http://www.marcusoft.net/tankwars/pages/match.html) and enter your tank URL. You can compete against yourself (enter the url twice) or against someone else, entering their url.
+* Clean up the docker images with these commands
 
-## Documentation
-
-The [API is well documented](http://www.marcusoft.net/tankwars/pages/api.html) and can be found here
-
-## If you want to clean up after the workshop
-
-* stop all containers: `docker kill $(docker ps -q)`
-* remove all containers: `docker rm $(docker ps -a -q)`
-* remove all docker images: `docker rmi $(docker images -q)`
+```
+docker kill tankwars
+docker rmi tankwars -f
+docker system prune -f
+```
