@@ -35,7 +35,7 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="asset-v" content="1521032524" />
+<meta name="asset-v" content="1521032693" />
 
 <link rel="stylesheet" type="text/css" media="all" href="http://www.marcusoft.net/tankwars/style/main.css" />
 
@@ -81,45 +81,50 @@
     <p><a href="http://www.marcusoft.net/tankwars/assets/tankwars-starter-kit.zip" download="">Download the files for the starter kit</a>
 and unzip them in suitable folder <code class="highlighter-rouge">/Projects/tankwars-starter-kit</code> for example</p>
   </li>
-  <li>Open an editor to that folder and open the <code class="highlighter-rouge">tank.js</code>-file.
+  <li>
+    <p>Open an editor to that folder and open the <code class="highlighter-rouge">tank.js</code>-file.</p>
     <ul>
       <li>Edit the name and description of your tank to match your mob</li>
       <li>Save the file</li>
     </ul>
   </li>
-  <li>Also open a terminal window into the folder where you unzipped the files.
+</ul>
+
+<p>Great - now let’s deploy your tank to the clouds.</p>
+
+<ul>
+  <li>Open a terminal window into the folder where you unzipped the files.
     <ul>
       <li>Leave this terminal window running for the duration of the workshop</li>
-      <li>
-        <p>Run this in a terminal window:</p>
-      </li>
-      <li>On Linux and OSX use this:
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build -t tankwars . &amp;&amp;
-  docker run -it --name tankwars --mount type=bind,source="$(pwd)",target=/tank tankwars /bin/bash
-</code></pre></div>        </div>
-      </li>
-      <li>On Windows run these two commands instead:
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build -t tankwars .
-</code></pre></div>        </div>
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker run -it --name tankwars --mount type=bind,source="%cd%",target=/tank tankwars /bin/bash
-</code></pre></div>        </div>
+      <li>Run this in a terminal window:
+        <ul>
+          <li>On Linux and OSX use this:
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build <span class="nt">-t</span> tankwars <span class="nb">.</span> <span class="o">&amp;&amp;</span>
+  docker run <span class="nt">-it</span> <span class="nt">--name</span> tankwars <span class="nt">--mount</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bind</span>,source<span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">"</span>,target<span class="o">=</span>/tank tankwars /bin/bash
+</code></pre></div>            </div>
+          </li>
+          <li>On Windows run these two commands instead:
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build -t tankwars .
+</code></pre></div>            </div>
+            <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker run -it --name tankwars --mount type=bind,source="%cd%",target=/tank tankwars /bin/bash
+</code></pre></div>            </div>
+          </li>
+        </ul>
       </li>
     </ul>
   </li>
-  <li>
-    <p>Wait a few minutes, but before long you will find yourself in the container. It will look something like this <code class="highlighter-rouge">root@11111111:/tank#</code></p>
-  </li>
+  <li>Wait a few minutes, but before long you will find yourself in the container. It will look something like this <code class="highlighter-rouge">root@11111111:/tank#</code></li>
   <li>Let’s create the tank for you by running this command in the container: <code class="highlighter-rouge">npm run create</code></li>
   <li>This will take a minute or two, since we need to install stuff before we deploy. But soon…</li>
-  <li><strong>Much success!</strong> Your tank is deployed on the internet. You need to copy the URL to the tank from the output of the last command. It looks something like this:</li>
+  <li><strong>Much success!</strong> Your tank is deployed on the internet. You need to copy the URL to the tank from the output of the last command. It looks something like this:
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"api"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dijyb021g4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&lt;==</span><span class="w"> </span><span class="err">copy</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">URL</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"api": {
-    "id": "dijyb021g4",
-    "module": "api",
-    "url": "https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest" // &lt;== copy this URL
-  }
-</code></pre></div></div>
 
 <p>This tank works… but honestly it’s pretty stupid. It just fires all the time. You need to improve the code in <code class="highlighter-rouge">tank.js</code>-file.
 But test it in a <a href="http://www.marcusoft.net/tankwars/pages/match.html">match</a> and you’ll see how it works.</p>
@@ -155,13 +160,12 @@ But test it in a <a href="http://www.marcusoft.net/tankwars/pages/match.html">ma
   </li>
   <li>
     <p>Clean up the docker images with these commands</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">kill </span>tankwars
+docker rmi tankwars <span class="nt">-f</span>
+docker system prune <span class="nt">-f</span>
+</code></pre></div>    </div>
   </li>
 </ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker kill tankwars
-docker rmi tankwars -f
-docker system prune -f
-</code></pre></div></div>
 
     </content>
     <footer id="main-footer">
@@ -176,7 +180,7 @@ docker system prune -f
 </script>
 
 
-<script src="http://www.marcusoft.net/tankwars/v/dev-1521032524.js"></script>
+<script src="http://www.marcusoft.net/tankwars/v/dev-1521032693.js"></script>
 
 
 
