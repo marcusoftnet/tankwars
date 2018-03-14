@@ -35,7 +35,7 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="asset-v" content="1521032941" />
+<meta name="asset-v" content="1521035222" />
 
 <link rel="stylesheet" type="text/css" media="all" href="http://www.marcusoft.net/tankwars/style/main.css" />
 
@@ -114,18 +114,18 @@ and unzip them in suitable folder <code class="highlighter-rouge">/Projects/tank
   <li>Wait a few minutes, but before long you will find yourself in the container. It will look something like this <code class="highlighter-rouge">root@11111111:/tank#</code></li>
   <li>Let’s create the tank for you by running this command in the container: <code class="highlighter-rouge">npm run create</code></li>
   <li>This will take a minute or two, since we need to install stuff before we deploy. But soon…</li>
-  <li><strong>Much success!</strong> Your tank is deployed on the internet. You need to copy the URL to the tank from the output of the last command. It looks something like this:
-    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"api"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dijyb021g4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&lt;==</span><span class="w"> </span><span class="err">copy</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">URL</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
 </ul>
 
+<p><strong>Much success!</strong> Your tank is deployed on the internet. You need to copy the URL to the tank from the output of the last command. It looks something like this:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="s2">"api"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dijyb021g4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dijyb021g4.execute-api.us-east-1.amazonaws.com/latest"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">&lt;==</span><span class="w"> </span><span class="err">copy</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">URL</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
 <p>This tank works… but honestly it’s pretty stupid. It just fires all the time. You need to improve the code in <code class="highlighter-rouge">tank.js</code>-file.
-But test it in a <a href="http://www.marcusoft.net/tankwars/pages/match.html">match</a> and you’ll see how it works.</p>
+But test it in a <a href="http://www.marcusoft.net/tankwars/pages/match.html">match</a> and you’ll see how it stands up to others.</p>
 
 <p>Better hurry up to make it better. We will run matches every 20 minutes.</p>
 
@@ -178,7 +178,7 @@ docker system prune <span class="nt">-f</span>
 </script>
 
 
-<script src="http://www.marcusoft.net/tankwars/v/dev-1521032941.js"></script>
+<script src="http://www.marcusoft.net/tankwars/v/dev-1521035222.js"></script>
 
 
 
