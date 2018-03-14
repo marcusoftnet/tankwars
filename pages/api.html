@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <meta charset="UTF-8">
-<title>API Docs</title>
+<title>MobProgramming Boston 2018: Tank Wars - API Docs</title>
 <meta name="description" content="Learn how to develop serverless cloud functions by participating in cloud tank warfare">
 <link rel="canonical" href="http://www.marcusoft.net/tankwars/pages/api.html">
 <link rel="alternate" type="application/rss+xml" title="MobProgramming Boston 2018: Tank Wars" href="http://www.marcusoft.net/tankwars/feed.xml">
@@ -35,7 +35,7 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="asset-v" content="1521026787" />
+<meta name="asset-v" content="1521027275" />
 
 <link rel="stylesheet" type="text/css" media="all" href="http://www.marcusoft.net/tankwars/style/main.css" />
 
@@ -125,14 +125,14 @@
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
   <span class="nl">matchId</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="c1">// unique ID for each match</span>
-  <span class="nx">mapWidth</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
-  <span class="nx">mapHeight</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
+  <span class="nx">mapWidth</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
+  <span class="nx">mapHeight</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
   <span class="nx">suddenDeath</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// number of turns left until sudden death starts</span>
   <span class="nx">wallDamage</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// how much damage does it cause to run into a wall</span>
   <span class="nx">tankDamage</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// how much damage does it cause to run into a tank -- also, how much damage your tank causes when it runs into a wall</span>
   <span class="nx">weaponDamage</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// how much damage does it cause to hit something with a bullet</span>
-  <span class="nx">visibility</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// how far, in fields, you can see on your radar </span>
-  <span class="nx">weaponRange</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// how far, in fields, you can hit with a bullet </span>
+  <span class="nx">visibility</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// how far, in fields, you can see on your radar</span>
+  <span class="nx">weaponRange</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> <span class="c1">// how far, in fields, you can hit with a bullet</span>
   <span class="nx">you</span><span class="p">:</span> <span class="nx">TANK</span><span class="p">,</span> <span class="c1">// your tank info -- see the tank structure below</span>
   <span class="nx">enemies</span><span class="p">:</span> <span class="p">[</span><span class="nx">TANK</span><span class="p">],</span> <span class="c1">// array. enemy tank info. see the tank structure below</span>
   <span class="nx">walls</span><span class="p">:</span> <span class="p">[</span><span class="nx">WALL</span><span class="p">],</span> <span class="c1">// array. visible walls. see the wall structure below</span>
@@ -153,10 +153,10 @@
 
 <h4 id="full-info-your-tank-enemies-on-your-radar">Full info (your tank, enemies on your radar)</h4>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span> 
-  <span class="nl">x</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
-  <span class="nx">y</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
-  <span class="nx">strength</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="nl">x</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
+  <span class="nx">y</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
+  <span class="nx">strength</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
   <span class="nx">direction</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="cm">/* 'left', 'right', 'top', 'bottom' */</span>
   <span class="nx">ammo</span><span class="p">:</span> <span class="kr">int</span>
 <span class="p">}</span></code></pre></figure>
@@ -165,10 +165,10 @@
 
 <p>Bumping into a wall causes damage. You can only see walls in your visibility zone:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span> 
-  <span class="nl">x</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
-  <span class="nx">y</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
-  <span class="nx">strength</span><span class="p">:</span> <span class="kr">int</span> 
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="nl">x</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
+  <span class="nx">y</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
+  <span class="nx">strength</span><span class="p">:</span> <span class="kr">int</span>
 <span class="p">}</span></code></pre></figure>
 
 <p><em>Note</em>: trying to move outside the map space will cause damage equal to wall damage. Border walls (around the entire map) are not in this list, but assume that anything outside [0,0] -&gt; [mapWidth, mapHeight] is a wall.</p>
@@ -177,8 +177,8 @@
 
 <p>Staying in fire causes damage. You can only see fire fields in your visibility zone. During sudden death, fire expands quickly.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span> 
-  <span class="nl">x</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span> 
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="nl">x</span><span class="p">:</span> <span class="kr">int</span><span class="p">,</span>
   <span class="nx">y</span><span class="p">:</span> <span class="kr">int</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -258,7 +258,7 @@
 </script>
 
 
-<script src="http://www.marcusoft.net/tankwars/v/dev-1521026787.js"></script>
+<script src="http://www.marcusoft.net/tankwars/v/dev-1521027275.js"></script>
 
 
 
