@@ -35,7 +35,7 @@
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="asset-v" content="1521030084" />
+<meta name="asset-v" content="1521032524" />
 
 <link rel="stylesheet" type="text/css" media="all" href="http://www.marcusoft.net/tankwars/style/main.css" />
 
@@ -90,16 +90,22 @@ and unzip them in suitable folder <code class="highlighter-rouge">/Projects/tank
   <li>Also open a terminal window into the folder where you unzipped the files.
     <ul>
       <li>Leave this terminal window running for the duration of the workshop</li>
-      <li>Run this in a terminal window:</li>
+      <li>
+        <p>Run this in a terminal window:</p>
+      </li>
+      <li>On Linux and OSX use this:
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build -t tankwars . &amp;&amp;
+  docker run -it --name tankwars --mount type=bind,source="$(pwd)",target=/tank tankwars /bin/bash
+</code></pre></div>        </div>
+      </li>
+      <li>On Windows run these two commands instead:
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build -t tankwars .
+</code></pre></div>        </div>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker run -it --name tankwars --mount type=bind,source="%cd%",target=/tank tankwars /bin/bash
+</code></pre></div>        </div>
+      </li>
     </ul>
   </li>
-</ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  docker build -t tankwars . &amp;&amp;
-  docker run -it --name tankwars --mount type=bind,source="$(pwd)",target=/tank tankwars /bin/bash
-</code></pre></div></div>
-
-<ul>
   <li>
     <p>Wait a few minutes, but before long you will find yourself in the container. It will look something like this <code class="highlighter-rouge">root@11111111:/tank#</code></p>
   </li>
@@ -170,7 +176,7 @@ docker system prune -f
 </script>
 
 
-<script src="http://www.marcusoft.net/tankwars/v/dev-1521030084.js"></script>
+<script src="http://www.marcusoft.net/tankwars/v/dev-1521032524.js"></script>
 
 
 
